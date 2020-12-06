@@ -48,7 +48,7 @@ class HomeComponent extends React.Component<Props, States> {
 		this.setState({ selectCountry: country }, this.refreshCovidStatuses)
 	}
 
-	private async refreshCovidStatuses() {
+	async refreshCovidStatuses() {
 		addLoading();
 		let res = await getCovidStatusByCountry(this.state.selectCountry.value, this.state.fromDate, this.state.toDate);
 		removeLoading();
@@ -70,13 +70,16 @@ class HomeComponent extends React.Component<Props, States> {
 	render() {
 		return (
 			<div>
-				<form data-testid="filterForm" className='col-md-9 row filter'>
-					<div className='col-md-4' data-testid="countrySelect"><Select value={this.state.selectCountry} onChange={this.onSelectCountry.bind(this)} options={this.state.options} /></div>
-					<div className='col-md-4'>
+				<form data-testid="filterForm" className='col-md-12 row filter'>
+					<div className='col-md-3' data-testid="countrySelect"><Select value={this.state.selectCountry} onChange={this.onSelectCountry.bind(this)} options={this.state.options} /></div>
+					<div className='col-md-3'>
 						Từ: <DatePicker className="date-input" selected={this.state.fromDate} onChange={this.changeFromDate.bind(this)} />
 					</div>
-					<div className='col-md-4'>
+					<div className='col-md-3'>
 						Đến: <DatePicker className="date-input" selected={this.state.toDate} onChange={this.changeToDate.bind(this)} />
+					</div>
+					<div className='col-md-3'>
+						<button onClick={this.refreshCovidStatuses} className="btn btn-primary">Refresh</button>
 					</div>
 				</form>
 				<table data-testid="statusesTable" className="table">

@@ -9,7 +9,7 @@ function renderHomeComponent() {
 	return render(<HomeComponent />);
 }
 
-it("renders without crashing", () => {
+test("renders without crashing", () => {
 	renderHomeComponent();
 });
 
@@ -43,6 +43,14 @@ test("should render correct margin, have correct class", async () => {
 	expect(homeComponent.getByTestId("filterForm")).not.toHaveStyle('margin-left: 50px');
 	expect(homeComponent.getByTestId("filterForm")).not.toHaveStyle('margin-right: 50px');
 
+});
+
+test('event refreshCovidStatuses have been called when user click on Refresh button', () => {
+	const refreshCovidStatuses = jest.spyOn(HomeComponent.prototype, 'refreshCovidStatuses');
+	const component = shallow(<HomeComponent />);
+	component.find('button').simulate('click');
+	component.update();
+	expect(refreshCovidStatuses).toHaveBeenCalled();
 });
 
 

@@ -21,7 +21,7 @@ const Menu: React.FC = () => {
 				<ul className="navbar-nav">
 					<li className="nav-item active">
 						<span className="nav-link disabled">
-							Home <span className="sr-only">(current)</span>
+							Trang chủ <span className="sr-only">(current)</span>
 						</span>
 					</li>
 				</ul>
