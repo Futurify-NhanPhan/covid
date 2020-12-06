@@ -22,6 +22,6 @@ pipelines:
             - aws configure set region ap-southeast-1
             - npm install
             # auto set env to production when use npm run build
-            - CI=false npm run build
+            - npm run build
             - aws s3 cp build/ s3://covid-checker --acl public-read --recursive
             - aws cloudfront create-invalidation --distribution-id $CLOUDFRONT_DISTRIBUTION_ID --paths '/*'           
