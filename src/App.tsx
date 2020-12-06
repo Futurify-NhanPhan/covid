@@ -6,7 +6,7 @@ import { Loading } from "./components/shared/loading";
 
 const App: React.FC = () => {
 	return (
-		<div className="App">
+		<div className="App container">
 			<Loading></Loading>
 			<Menu></Menu>
 			<HomeComponent></HomeComponent>

@@ -69,7 +69,7 @@ class HomeComponent extends React.Component<Props, States> {
 
 	render() {
 		return (
-			<div className='container'>
+			<div>
 				<form data-testid="filterForm" className='col-md-9 row filter'>
 					<div className='col-md-4' data-testid="countrySelect"><Select value={this.state.selectCountry} onChange={this.onSelectCountry.bind(this)} options={this.state.options} /></div>
 					<div className='col-md-4'>

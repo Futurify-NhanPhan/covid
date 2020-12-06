@@ -1,0 +1,27 @@
+# This is a sample build configuration for Javascript (Node.js).
+# Check our guides at https://confluence.atlassian.com/x/14UWN for more examples.
+# Only use spaces to indent your .yml configuration.
+# -----
+# You can specify a custom docker image from Docker Hub as your build environment.
+image: node:8.15.1
+
+pipelines:
+  custom:
+    staging:
+      - step:
+          name: Build and deploy staging
+          caches:
+            - node
+          script:
+            - apt-get update
+            - apt-get install git python3 python3-pip -y
+            - pip3 install awscli
+            # export CLOUDFRONT_DISTRIBUTION_ID=E3D9DZ8ICHFAFR
+            - aws configure set aws_access_key_id $AWS_ACCESS_KEY_ID
+            - aws configure set aws_secret_access_key $AWS_SECRET_ACCESS_KEY
+            - aws configure set region ap-southeast-1
+            - npm install
+            # auto set env to production when use npm run build
+            - CI=false npm run build
+            - aws s3 cp build/ s3://covid-checker --acl public-read --recursive
+            # aws cloudfront create-invalidation --distribution-id $CLOUDFRONT_DISTRIBUTION_ID --paths '/*'           
