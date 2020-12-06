@@ -10,7 +10,7 @@ import "react-datepicker/dist/react-datepicker.css";
 
 type Props = {};
 type States = {
-	options: SelectOption[],
+	countries: SelectOption[],
 	covidStatuses: CovidStatus[],
 	selectCountry: SelectOption,
 	fromDate: Date,
@@ -19,17 +19,15 @@ type States = {
 class HomeComponent extends React.Component<Props, States> {
 	constructor(props: Props) {
 		super(props);
-
 		this.state = {
-			options: [],
+			countries: [],
 			covidStatuses: [],
 			selectCountry: {} as SelectOption,
-			fromDate: moment(new Date()).add(-4, "days").toDate(),
-			toDate: moment(new Date()).add(-1, "days").toDate(),
+			fromDate: moment(new Date()).add(-4, "days").toDate(), // show update from last 4 days
+			toDate: moment(new Date()).add(-1, "days").toDate(), // the api some time have error when we use current date (maybe because the time zone).
 		}
-
-
 	}
+
 	async componentDidMount() {
 		addLoading();
 		let res = await getCountriesAsync()
@@ -38,13 +36,14 @@ class HomeComponent extends React.Component<Props, States> {
 		let options = countries.map((country) => {
 			return { value: country.ISO2, label: country.Country }
 		});
-		this.setState({ options: options });
+		this.setState({ countries: options });
+		// default select Viet Nam at the first time load
 		let vietnam: SelectOption = { label: 'Viet Nam', value: 'VN' };
 		this.onSelectCountry(vietnam)
 	}
 
 	async onSelectCountry(value: any) {
-		let country = value as SelectOption;
+		let country: SelectOption = value;
 		this.setState({ selectCountry: country }, this.refreshCovidStatuses)
 	}
 
@@ -70,8 +69,11 @@ class HomeComponent extends React.Component<Props, States> {
 	render() {
 		return (
 			<div>
+				{/* filter form */}
 				<form data-testid="filterForm" className='col-md-12 row filter'>
-					<div className='col-md-3' data-testid="countrySelect"><Select value={this.state.selectCountry} onChange={this.onSelectCountry.bind(this)} options={this.state.options} /></div>
+					<div className='col-md-3' data-testid="countrySelect">
+						<Select value={this.state.selectCountry} onChange={this.onSelectCountry.bind(this)} options={this.state.countries} />
+					</div>
 					<div className='col-md-3'>
 						Từ: <DatePicker className="date-input" selected={this.state.fromDate} onChange={this.changeFromDate.bind(this)} />
 					</div>
@@ -82,6 +84,7 @@ class HomeComponent extends React.Component<Props, States> {
 						<button onClick={this.refreshCovidStatuses} className="btn btn-primary">Refresh</button>
 					</div>
 				</form>
+				{/* status table */}
 				<table data-testid="statusesTable" className="table">
 					<thead>
 						<tr>
@@ -106,13 +109,11 @@ class HomeComponent extends React.Component<Props, States> {
 								</tr>
 							);
 						})}
-
-
 					</tbody>
 				</table>
 			</div>
 		);
-	};
+	}
 }
 
 export default HomeComponent;
