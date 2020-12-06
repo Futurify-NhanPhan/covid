@@ -1,0 +1,62 @@
+{
+	"name": "covid-checker",
+	"version": "0.1.0",
+	"private": true,
+	"dependencies": {
+		"@testing-library/jest-dom": "^5.11.6",
+		"@testing-library/react": "^11.2.2",
+		"@types/jest": "24.0.18",
+		"@types/moment": "^2.13.0",
+		"@types/node": "12.7.4",
+		"@types/react": "16.9.2",
+		"@types/react-dom": "16.9.0",
+		"axios": "^0.21.0",
+		"bootstrap": "^4.3.1",
+		"enzyme": "^3.11.0",
+		"enzyme-adapter-react-16": "^1.15.5",
+		"jest-dom": "^4.0.0",
+		"jquery": "^3.5.1",
+		"moment": "^2.29.1",
+		"popper.js": "^1.15.0",
+		"qs": "^6.9.4",
+		"react": "17.0.1",
+		"react-datepicker": "^3.3.0",
+		"react-dom": "17.0.1",
+		"react-router-dom": "^5.1.2",
+		"react-scripts": "4.0.1",
+		"react-select": "^3.1.1",
+		"rxjs": "^6.6.3",
+		"typescript": "3.6.2"
+	},
+	"scripts": {
+		"start": "react-scripts start",
+		"build": "react-scripts build",
+		"test": "react-scripts test",
+		"eject": "react-scripts eject"
+	},
+	"eslintConfig": {
+		"extends": "react-app"
+	},
+	"browserslist": {
+		"production": [
+			">0.2%",
+			"not dead",
+			"not op_mini all"
+		],
+		"development": [
+			"last 1 chrome version",
+			"last 1 firefox version",
+			"last 1 safari version"
+		]
+	},
+	"devDependencies": {
+		"@types/enzyme": "^3.10.8",
+		"@types/enzyme-adapter-react-16": "^1.0.6",
+		"@types/qs": "^6.9.5",
+		"@types/react-datepicker": "^3.1.2",
+		"@types/react-router-dom": "^5.1.6",
+		"@types/react-select": "^3.0.27",
+		"css-loader": "^3.2.0",
+		"style-loader": "^1.0.0"
+	}
+}

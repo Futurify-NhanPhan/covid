@@ -1,0 +1,25 @@
+.status{
+	font-weight: bold;
+}
+.status.deaths{
+	color: brown;
+}
+
+.status.active{
+	color: #8080FF;
+}
+
+.status.recovered{
+	color: #8ACA2B;
+}
+.province{
+	text-align: left;
+}
+
+.filter{
+	margin-top: 50px;
+	margin-bottom: 50px;
+}
+input.date-input{
+	min-height: 38px;
+}

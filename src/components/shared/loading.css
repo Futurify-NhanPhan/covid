@@ -1,0 +1,48 @@
+.eve-loader {
+  zoom: 0.3;
+  border: 16px solid #93acf1;
+  border-radius: 50%;
+  border-top: 16px solid #00aea4;
+  border-bottom: 16px solid #00aea4;
+  width: 120px;
+  height: 120px;
+  animation: spin 0.5s linear infinite;
+  display: inline-block;
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  margin: auto;
+  right: 0;
+  z-index: 99999;
+}
+
+.overlay-background {
+  background-color: #fff;
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  z-index: 99998;
+  top: 0px;
+  left: 0px;
+  opacity: 0; /* in FireFox */
+  filter: alpha(opacity=0); /* in IE */
+}
+
+@-webkit-keyframes spin {
+  0% {
+    -webkit-transform: rotate(0deg);
+  }
+  100% {
+    -webkit-transform: rotate(360deg);
+  }
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
