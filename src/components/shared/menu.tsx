@@ -3,9 +3,9 @@ import React from "react";
 const Menu: React.FC = () => {
 	return (
 		<nav className="navbar navbar-expand-lg navbar-light bg-light">
-			<a className="navbar-brand" href="/#">
+			<span className="navbar-brand">
 				Covid checker
-      		</a>
+      		</span>
 			<button
 				className="navbar-toggler"
 				type="button"
@@ -20,9 +20,9 @@ const Menu: React.FC = () => {
 			<div className="collapse navbar-collapse" id="navbarNav">
 				<ul className="navbar-nav">
 					<li className="nav-item active">
-						<a className="nav-link" href="/#">
+						<span className="nav-link disabled">
 							Home <span className="sr-only">(current)</span>
-						</a>
+						</span>
 					</li>
 				</ul>
 			</div>
