@@ -16,7 +16,6 @@ export const removeLoading = () => {
 export const Loader = () => {
 	return (
 		<Fragment>
-			<div className="overlay-background"></div>
 			<div className="eve-loader"></div>
 		</Fragment>
 	);
