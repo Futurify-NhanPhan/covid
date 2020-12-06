@@ -70,7 +70,7 @@ class HomeComponent extends React.Component<Props, States> {
 		return (
 			<div>
 				{/* filter form */}
-				<form data-testid="filterForm" className='col-md-12 row filter'>
+				<div data-testid="filterForm" className='col-md-12 row filter'>
 					<div className='col-md-3' data-testid="countrySelect">
 						<Select value={this.state.selectCountry} onChange={this.onSelectCountry.bind(this)} options={this.state.countries} />
 					</div>
@@ -81,9 +81,9 @@ class HomeComponent extends React.Component<Props, States> {
 						Đến: <DatePicker className="date-input" selected={this.state.toDate} onChange={this.changeToDate.bind(this)} />
 					</div>
 					<div className='col-md-3'>
-						<button onClick={this.refreshCovidStatuses} className="btn btn-primary">Refresh</button>
+						<button onClick={this.refreshCovidStatuses.bind(this)} className="btn btn-primary">Refresh</button>
 					</div>
-				</form>
+				</div>
 				{/* status table */}
 				<table data-testid="statusesTable" className="table">
 					<thead>
